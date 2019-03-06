@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <div id="app">
+    <input type="text" v-on:input="changeTitle">
+    <p>{{ sayHello() }}</p>
+    <p><a v-bind:href="link">Google</a></p>
+    <h1 v-once> {{ title }} </h1>
+    <p> {{ titleChange }} </p>
+    <hr>
+  
+    <p v-html="finishedLink"></p>
+
+  </div>
+</body>
+</html>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script> 
+<script>
+
+  new Vue({ 
+    el: '#app',
+    data: {
+      title: "Hello World",
+      titleChange: "Hello World",
+      link: 'https://google.com',
+      finishedLink: '<a href="http://google.com">Google</a>'
+    },
+    methods: {
+      sayHello: function() {
+        this.title = "Hello again!";
+        return "Hello!";
+      },
+      changeTitle: function(event) {
+        this.titleChange = event.target.value;
+      }
+    }
+  });
+
+</script>
